@@ -1,0 +1,74 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel} 
+\usepackage[utf8]{inputenc} 
+\let\lll\undefined
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{latexsym}
+\pagestyle{fancy} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\mainmatter}{\clearpage \cfoot{\thepage\ of \pageref{LastPage}}
+\pagenumbering{arabic}} 
+\lstset{language=bash}  
+\begin{document}
+
+	\begin{titlepage}
+\includegraphics[width = 40mm]{logo.jpg}
+		\begin{center}
+    			\vspace{3cm}
+    					\Large\textit{\textbf{Rozproszony algorytm genetyczny: MPI}}
+    					\Large\textit{\textbf{Programowanie równoległe i rozproszone}}
+   			\vspace{4cm}
+		\end{center} 
+
+		\hfill\begin{minipage}{0.54\textwidth}
+			\Large Wykonanie:\newline
+				1. Ivan Prakapets  \newline
+				2. Piotr Jeleniewicz 
+		\vspace{\baselineskip}
+		\end{minipage}
+		
+		\hfill\begin{minipage}{0.54\textwidth}
+			\Large Sprawdzająca:\newline
+		 		dr inż. Zuzanna Krawczyk
+\vspace{\baselineskip}
+		\end{minipage}
+	
+		\hfill\begin{minipage}{0.7\textwidth}
+		\vspace{1cm}
+			\Large Warszawa, 2020
+			\vspace{\baselineskip}
+		\end{minipage}
+	\end{titlepage}
+\newpage
+\mainmatter
+\setlength{\headheight}{15pt}
+\doublespacing
+\tableofcontents
+\newpage
+
+\linespread{0.5}
+\setlist{nolistsep}
+
+\section{Opis uruchomienia i wywołania programu}
+\section{dokładny opis realizacji problemu}
+\section{testy programu pokazujące np. uzyskane przyspieszenie}
+\section{Wnioski} 
+
+
+\label{LastPage}~
+\label{LastPageOfBackMatter}~		
+\end{document}
