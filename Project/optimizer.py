@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-from accessify import protected
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 from collections import OrderedDict
@@ -16,7 +15,6 @@ class OptimizerGA:
     def __init__(self, function):
         self.function = function
 
-    @protected
     def generate_new_part(self, chromosomes, mutation=False, optimizer='min'):
         values = [self.function(*chromosome) for chromosome in chromosomes]
         chromosomesDict = dict(zip([str(i) for i in range(4)], values))
@@ -43,7 +41,6 @@ class OptimizerGA:
                              [best_chromosome[0], good_chromosome[1] + float(mutation * rd.rand(1))]])
         return new_part
 
-    @protected
     def next_generation(self, mutation=False, optimizer='min'):
         part = np.array([self.chromosomes[j] for j in range(0, 4)])
         new_population = self.generate_new_part(part, mutation, optimizer)
@@ -55,7 +52,6 @@ class OptimizerGA:
 
         return new_population
 
-    @protected
     def calculate(self, optimizer='min'):
         if optimizer == 'min':
             return min([self.function(*chromosome) for chromosome in self.chromosomes])
@@ -64,7 +60,6 @@ class OptimizerGA:
         else:
             raise ValueError(optimizer + 'should be max or min')
 
-    @protected
     def plotGA(self, chromosomes_number, generations_number, optimizer, save=False):
         data = pd.concat([pd.read_csv('generations/generation_{}.csv'.format(i + 1), index_col=0)
                           for i in range(generations_number)], ignore_index=True)
@@ -122,7 +117,7 @@ class OptimizerGA:
 
         plt.show()
         if save:
-            anim.save('GA-animation.gif', writer='imagemagick', fps=60)
+            anim.save('results/GA-animation.gif', writer='imagemagick', fps=60)
 
     def startGA(self, chromosomes_number=4, generations_number=10,
                 mutation=False, optimizer='min',

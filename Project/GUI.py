@@ -2,9 +2,6 @@ import tkinter.scrolledtext as tkst
 import tkinter as tk
 
 from tkinter import *
-from accessify import protected
-
-from settingsGA import gaParams
 from optimizer import OptimizerGA
 from function import Func
 
@@ -15,9 +12,6 @@ class gaGUI():
         self.root.title("Settings")
         self.root.geometry('500x250+100+100')
         self.root.configure(bg='white')
-        # photo = PhotoImage(file = "logo.png")
-        # w = Label(self.root, image=photo)
-        # w.grid()
         self.f = StringVar()
         self.chromosomes_number = IntVar()
         self.generations_number = IntVar()
@@ -82,7 +76,7 @@ class gaGUI():
                               statistics=self.statistics.get(), save=self.save.get(), plot=self.plot.get())
 
             if self.statistics.get():
-                with open('GA-statistics.txt', 'r') as f:
+                with open('results/GA-statistics.txt', 'r') as f:
                     mytext = f.read()
                     root = Tk()
 
