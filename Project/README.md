@@ -1,5 +1,5 @@
 # Maksymum Minimum Funkcji poprzez Algorytm genetyczny
-
+## Optymalizacja funkcji oparta na algorytmach genetycznych
 ### Uruchomienie:
 ** python3 main.py aby uruchomić ten program i otworzyć GUI
 
@@ -22,4 +22,20 @@ https://pl.wikipedia.org/wiki/Algorytm_genetyczny
 https://www.tutorialspoint.com/genetic_algorithms/genetic_algorithms_crossover.html
 https://www.sciencedirect.com/science/article/pii/S0045794900000894
 https://www.geeksforgeeks.org/crossover-in-genetic-algorithm/
- 
+
+
+
+### Jak korzystać   
+
+uruchomić ten program i otworzyć ustawienia-GUI z kilkoma polami:    
+- f(x, y) input string  
+- chromosomes   
+- generations number input string liczba pokoleń  
+- optimizer function (min or max) funkcja optymalizatora (min lub max)  
+
+Oraz pola z ptaszkami (funkcjonalne):  
+
+- mutation - dodanie mutacji do każdej części (4 osobników) nowego pokolenia  
+- show statistics - pokazuje dokładne informacje o każdym pokoleniu  
+- save all files - zapisuje do folderu results statystyki wyników z animacją w .gif oraz ga-statystyki + do folderu generations dane csv z kolumnami x, y, f (x, y)  
+- show plot - pokazuje animację ewaluacji  
