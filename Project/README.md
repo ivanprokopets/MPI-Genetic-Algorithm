@@ -39,3 +39,12 @@ Oraz pola z ptaszkami (funkcjonalne):
 - show statistics - pokazuje dokładne informacje o każdym pokoleniu  
 - save all files - zapisuje do folderu results statystyki wyników z animacją w .gif oraz ga-statystyki + do folderu generations dane csv z kolumnami x, y, f (x, y)  
 - show plot - pokazuje animację ewaluacji  
+
+MPI:  
+- https://www.mn.uio.no/astro/english/services/it/help/programming/mpi-linux-clusters.html  
+- https://software.intel.com/en-us/forums/intel-clusters-and-hpc-technology/topic/289516  
+- https://rabernat.github.io/research_computing/parallel-programming-with-mpi-for-python.html
+- https://www.youtube.com/watch?v=36nCgG40DJo
+- http://prac.im.pwr.wroc.pl/~szwabin/assets/diff/7.pdf strona 9
+- https://stackoverflow.com/questions/17054469/parallel-application-in-python-becomes-much-slower-when-using-mpi-rather-than-mu ???
+
