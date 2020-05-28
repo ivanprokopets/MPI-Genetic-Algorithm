@@ -1,7 +1,7 @@
 # Maksymum Minimum Funkcji poprzez Algorytm genetyczny
 ## Optymalizacja funkcji oparta na algorytmach genetycznych
 
-![Alt Text](results/GA-animation.gif)
+![Alt Text](GA-animation.gif)
 
 
 ### Uruchomienie:
