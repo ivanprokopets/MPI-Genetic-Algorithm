@@ -1,5 +1,9 @@
 # Maksymum Minimum Funkcji poprzez Algorytm genetyczny
 ## Optymalizacja funkcji oparta na algorytmach genetycznych
+
+![Alt Text](results/GA-animation.gif)
+
+
 ### Uruchomienie:
 ** python3 main.py aby uruchomić ten program i otworzyć GUI
 
