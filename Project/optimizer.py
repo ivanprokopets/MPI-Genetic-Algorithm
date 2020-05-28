@@ -35,10 +35,10 @@ class OptimizerGA:
         better_chromosome = chromosomes[int(chromosome_indexes[1])]
         best_chromosome = chromosomes[int(chromosome_indexes[0])]
 
-        new_part = np.array([[better_chromosome[0] + float(mutation * rd.rand(1)), best_chromosome[1]],
-                             [good_chromosome[0] + float(mutation * rd.rand(1)), best_chromosome[1]],
-                             [best_chromosome[0], better_chromosome[0] + float(mutation * rd.rand(1))],
-                             [best_chromosome[0], good_chromosome[1] + float(mutation * rd.rand(1))]])
+        new_part = np.array([[better_chromosome[0] + float(2 * mutation * rd.rand(1) - 1), best_chromosome[1]],
+                             [good_chromosome[0] + float(2 * mutation * rd.rand(1) - 1), best_chromosome[1]],
+                             [best_chromosome[0], better_chromosome[0] + float(2 * mutation * rd.rand(1) - 1)],
+                             [best_chromosome[0], good_chromosome[1] + float(2 * mutation * rd.rand(1) - 1)]])
         return new_part
 
     def next_generation(self, mutation=False, optimizer='min'):
@@ -67,10 +67,10 @@ class OptimizerGA:
         data['time'] = [i for i in range(chromosomes_number * generations_number)]
 
         def update_graph(num):
-            df = data[abs(num - data['time']) <= chromosomes_number]
+            df = data[abs(num * chromosomes_number - data['time']) <= 2 * chromosomes_number]
             graph.set_data(np.array(df['x']), np.array(df['y']))
             graph.set_3d_properties(np.array(df['f(x, y)']))
-            title.set_text('GA-optimizer time={}'.format(num))
+            title.set_text('GA-optimizer generation={}'.format(num + 1))
             return title, graph,
 
         fig = plt.figure(figsize=(15, 8), num='GA animation')
@@ -78,33 +78,48 @@ class OptimizerGA:
         ax = fig.add_subplot(111, projection='3d')
 
         # Make data.
-        X = np.arange(-5, 5, 0.25)
-        Y = np.arange(-5, 5, 0.25)
+        X = np.arange(-4, 4, 0.25)
+        Y = np.arange(-4, 4, 0.25)
         X, Y = np.meshgrid(X, Y)
         Z = self.function(X, Y)
+        '''
+                if optimizer == 'min':
+                    color = 'blue'
+                    color_map = cm.OrRd
+                else:
+                    color = 'red'
+                    color_map = cm.Blues
 
-        if optimizer == 'min':
-            color = 'blue'
-            color_map = cm.OrRd
-        else:
-            color = 'red'
-            color_map = cm.Blues
+                # Plot the surface.
+                surf = ax.plot_surface(X, Y, Z, cmap=color_map,
+                                       linewidth=0, antialiased=True)
+
+                title = ax.set_title('GA-optimizer plot')
+
+                df = data[data['time'] == 0]
+                graph, = ax.plot(np.array(df['x']), np.array(df['y']), np.array(df['f(x, y)']),
+                                 linestyle="", c=color, marker='o', ms=5)
+        '''
+        theCM = cm.get_cmap()
+        theCM._init()
+        alphas = np.abs(np.linspace(-1, 1, int(theCM.N)))
+        theCM._lut[:-3, -1] = alphas
 
         # Plot the surface.
-        surf = ax.plot_surface(X, Y, Z, cmap=color_map,
-                               linewidth=0, antialiased=True)
+        surf = ax.plot_surface(X, Y, Z, cmap=theCM,
+                               linewidth=0, antialiased=True, alpha=0.6)
 
         title = ax.set_title('GA-optimizer plot')
 
         df = data[data['time'] == 0]
         graph, = ax.plot(np.array(df['x']), np.array(df['y']), np.array(df['f(x, y)']),
-                         linestyle="", c=color, marker='o', ms=5)
+                         linestyle="", c='black', marker='2', ms=2)
 
-        anim = animation.FuncAnimation(fig, update_graph, chromosomes_number * generations_number - 1,
-                                       interval=chromosomes_number, save_count=True)
+        anim = animation.FuncAnimation(fig, update_graph, generations_number,
+                                       interval=200, save_count=True)
 
         # Customize the z axis.
-        ax.set_zlim(-1.31, 1.31)
+        ax.set_zlim(-5, 5)
         ax.zaxis.set_major_locator(LinearLocator(10))
         ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
@@ -122,14 +137,15 @@ class OptimizerGA:
     def startGA(self, chromosomes_number=4, generations_number=10,
                 mutation=False, optimizer='min',
                 statistics=True, save=False, plot=True):
-        self.chromosomes = np.array(
-            [(chromosomes_number * rd.rand(2) - (chromosomes_number / 2)) for i in range(chromosomes_number)])
+        self.chromosomes = np.array([(2 * rd.rand(2) - 2) for i in range(chromosomes_number)])
 
-        f = open('GA-statistics.txt', 'w')
+        f = open('results/GA-statistics.txt', 'w')
         for i in range(generations_number):
             self.chromosomes = self.next_generation(mutation, optimizer)
             df = pd.DataFrame(self.chromosomes, columns=['x', 'y'])
-            df['f(x, y)'] = self.function(df['x'], df['y'])
+            x = np.array(df['x'])
+            y = np.array(df['y'])
+            df['f(x, y)'] = self.function(x, y)
             df.to_csv("generations/generation_{}.csv".format(i + 1))
 
             f.write('_' * 70)

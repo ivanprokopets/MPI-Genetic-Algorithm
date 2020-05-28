@@ -10,7 +10,7 @@ class gaGUI():
     def __init__(self):
         self.root = Tk()
         self.root.title("Settings")
-        self.root.geometry('500x250+100+100')
+        self.root.geometry('550x300+100+100')
         self.root.configure(bg='white')
         self.f = StringVar()
         self.chromosomes_number = IntVar()
