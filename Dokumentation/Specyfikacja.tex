@@ -29,7 +29,7 @@
 \includegraphics[width = 40mm]{logo.jpg}
 		\begin{center}
     			\vspace{3cm}
-    					\Large\textit{\textbf{Rozproszony algorytm genetyczny  do wyszukiwania globalnej ekstremy}}
+    					\Large\textit{\textbf{Rozproszony algorytm genetyczny  do wyszukiwania globalnej ekstremy: MPI}}
     					\Large\textit{\textbf{Programowanie równoległe i rozproszone}}
    			\vspace{4cm}
 		\end{center} 
@@ -64,7 +64,7 @@
 \setlist{nolistsep}
 
 \section{Opis problemu}
-\hspace*{1cm} Celem projektu jest stowrzenie i implementacjia algorytmu genetycznego w Pythonie do wyszukiwania globalnych ekstremów, który ma na celu wykonywać optymilizację w rozproszony sposób wykorzystując MPI.
+\hspace*{1cm} Celem projektu jest stworzenie  i implementacji algorytmu genetycznego w Pythonie do wyszukiwania globalnych ekstremów, który ma na celu wykonywać optymalizację w rozproszony sposób wykorzystując MPI.
 \section{Opis funkcjonalności programu}
 Będzie możliwe:
 \begin{itemize}
@@ -79,8 +79,8 @@ Możliwe opcji:
 \begin{itemize}
     \item odznaczenie pokazanie mutacji
     \item zapisanie do pliku
-    \item wyswietlenie statystyk
-    \item wyswietlenie grafika
+    \item wyświetlenie  statystyk
+    \item wyświetlenie  grafika
 \end{itemize}
 \section{Analiza możliwości zrównoleglenia programu}
 \hspace*{1cm} Będziemy starać się zrównoleglić nasz program za pomocą MPI.
@@ -91,10 +91,10 @@ Przywidujemy użyć takich bibliotek jak:
     \item MPI do zrównoleglenia programu
     \item numpy, pandas
     \item tkinter dla wizualizacji
-    \item matpltolib do wyswietlenie grafików
+    \item matpltolib do wyświetlenie grafików
 \end{itemize}
 \section{Opis sposobu zrównoleglenia}
-Wykorzystać MPI.
+Wykorzystać MPI, która umożliwi nam wykonywanie komunikacji rozproszonej.
 \section{Wnioski} 
 \begin{enumerate}
     \item Właściwy zestaw parametrów pozwala na dość dokładne znalezienie globalnego ekstremum funkcji z dwóch zmiennych
