@@ -67,14 +67,11 @@ class gaGUI():
 
     def gaInfo(self):
         try:
-            function = Func(self.f_entry.get())
-
-            optimizer = OptimizerGA(function)
+            optimizer = OptimizerGA(self.f_entry.get())
             optimizer.startGA(chromosomes_number=int(self.chromosomes_number_entry.get()),
                               generations_number=int(self.generations_number_entry.get()),
                               mutation=self.mutation.get(), optimizer=self.optimizer_entry.get(),
                               statistics=self.statistics.get(), save=self.save.get(), plot=self.plot.get())
-
             if self.statistics.get():
                 with open('results/GA-statistics.txt', 'r') as f:
                     mytext = f.read()
@@ -113,8 +110,3 @@ class gaGUI():
                            bg='red', state='active', bd=3, height=2, width=8)
         ok_button.pack()
         root.mainloop()
-
-
-
-
-

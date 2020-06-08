@@ -5,7 +5,7 @@
 
 
 ### Uruchomienie:
-** python3 main.py aby uruchomić ten program i otworzyć GUI
+** mpiexec -n 4 python script.py main.py aby uruchomić ten program i otworzyć GUI
 
 
 Program ten w przybliżeniu oblicza minimum lub maksimum funkcji o dwóch parametrach na podstawie algorytmu genetycznego.  
