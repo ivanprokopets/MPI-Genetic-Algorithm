@@ -22,3 +22,4 @@ bakap
 *.mtc1
 *.out
 *.synctex.gz
+*.pyc
